@@ -1,0 +1,21 @@
+{
+  "header": {
+    "title": "Докладная записка",
+    "id": "00002",
+    "timestamp": "17:01:13",
+    "service": "2",
+    "correlationId": "null",
+    "status": "Agreed"
+  },
+  "body": {
+    "success": true,
+    "result":"В связи с появлением данной проблемы был отправлен на ремонт оборудования сотрудник Иванов И."
+  },
+  "body": {
+    "success": false,
+    "error": {
+      "errorCode": "",
+      "errorMessage": ""
+    }
+  }
+}

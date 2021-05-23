@@ -1,0 +1,39 @@
+version: "3"
+services:
+  kafka:
+    image: wurstmeister/kafka
+    ports:
+      - 9092:9092
+    volumes:
+      - kafka-data:/etc/kafka
+    environment:
+      - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
+      - KAFKA_ADVERTISED_HOST_NAME=127.0.0.1
+      - KAFKA_ADVERTISED_PORT=9092
+    depends_on:
+      - zookeeper
+
+  zookeeper:
+    image: wurstmeister/zookeeper
+    ports:
+      - 2181:2181
+
+  consul:
+    image: consul:latest
+    volumes:
+      - consul-data:/consul/data
+    ports:
+      - 53:8600
+      - 53:8600/udp
+      - 8500:8500
+    command: agent -dev -node=node01 -client=0.0.0.0 -advertise=10.0.0.100 -data-dir=/consul/data
+
+  app:
+    build: ./
+    depends_on:
+      - kafka
+      - consul
+
+volumes:
+  kafka-data:
+  consul-data:
