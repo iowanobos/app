@@ -28,12 +28,6 @@ services:
       - 8500:8500
     command: agent -dev -node=node01 -client=0.0.0.0 -advertise=10.0.0.100 -data-dir=/consul/data
 
-  app:
-    build: ./
-    depends_on:
-      - kafka
-      - consul
-
 volumes:
   kafka-data:
   consul-data:

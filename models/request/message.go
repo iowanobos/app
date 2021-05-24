@@ -2,13 +2,11 @@ package request
 
 import "time"
 
-//easyjson:json
 type MessageModel struct {
 	Header MessageHeaderModel `json:"header"`
 	Body   MessageBodyModel   `json:"body"`
 }
 
-//easyjson:json
 type MessageHeaderModel struct {
 	Title         string    `json:"title"`
 	ID            string    `json:"id"`
@@ -17,7 +15,6 @@ type MessageHeaderModel struct {
 	CorrelationID string    `json:"correlationId"`
 }
 
-//easyjson:json
 type MessageBodyModel struct {
 	Method string   `json:"method"`
 	Params []string `json:"params"`

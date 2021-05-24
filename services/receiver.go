@@ -61,7 +61,7 @@ func NewReceiver(c *models.Config) *Receiver {
 	if err != nil {
 		log.Fatal("Create producer failed. Error: " + err.Error())
 	}
-	consumer, err := sarama.NewConsumerGroup([]string{c.KafkaAddress}, "receiver`-group", config)
+	consumer, err := sarama.NewConsumerGroup([]string{c.KafkaAddress}, "receiver-group", config)
 	if err != nil {
 		log.Fatal("Create consumer failed. Error: " + err.Error())
 	}

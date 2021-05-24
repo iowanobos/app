@@ -51,7 +51,3 @@ func main() {
 	}
 	log.Println("Application shut downing...")
 }
-
-func registerService(name string) {
-
-}
