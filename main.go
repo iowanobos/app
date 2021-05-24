@@ -1,6 +1,7 @@
 package main
 
 import (
+	"awesomeProject1/diploma/clients"
 	"awesomeProject1/diploma/models"
 	"awesomeProject1/diploma/services"
 	"context"
@@ -24,10 +25,15 @@ func main() {
 		KafkaAddress:  "localhost:9092",
 	}
 
+	consul := clients.NewConsul()
+
 	receiver := services.NewReceiver(config)
 	go receiver.Start(ctx)
+	consul.Register(receiver.Name)
+
 	sender := services.NewSender(config)
 	go sender.Start(ctx)
+	consul.Register(sender.Name)
 
 	sigc := make(chan os.Signal, 1)
 	signal.Notify(sigc,
@@ -39,7 +45,13 @@ func main() {
 	case <-ctx.Done():
 	case <-sigc:
 		cancel()
+		consul.Unregister(receiver.Name)
+		consul.Unregister(sender.Name)
 		<-ctx.Done()
 	}
 	log.Println("Application shut downing...")
+}
+
+func registerService(name string) {
+
 }

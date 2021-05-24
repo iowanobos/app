@@ -13,7 +13,7 @@ import (
 )
 
 type Sender struct {
-	name         string
+	Name         string
 	sendTopic    string
 	receiveTopic string
 	producer     sarama.SyncProducer
@@ -49,7 +49,7 @@ func NewSender(c *models.Config) *Sender {
 	}
 
 	return &Sender{
-		name:         "sender",
+		Name:         "sender",
 		sendTopic:    c.RequestTopic,
 		receiveTopic: c.ResponseTopic,
 		producer:     producer,
@@ -91,7 +91,7 @@ func (s *Sender) generateRequestMessage() *request.MessageModel {
 			Title:         utils.GetRandText() + "-request title",
 			ID:            uuid.New().String(),
 			Timestamp:     time.Now(),
-			Service:       s.name,
+			Service:       s.Name,
 			CorrelationID: "null",
 		},
 		Body: request.MessageBodyModel{
