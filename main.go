@@ -1,9 +1,10 @@
 package main
 
 import (
-	"awesomeProject1/diploma/clients"
-	"awesomeProject1/diploma/models"
-	"awesomeProject1/diploma/services"
+	"github.com/iowanobos/app/clients"
+	"github.com/iowanobos/app/models"
+	"github.com/iowanobos/app/services"
+
 	"context"
 	"log"
 	"math/rand"

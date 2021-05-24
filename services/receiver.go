@@ -1,13 +1,14 @@
 package services
 
 import (
-	"awesomeProject1/diploma/models"
-	"awesomeProject1/diploma/models/request"
-	"awesomeProject1/diploma/models/response"
-	"awesomeProject1/diploma/utils"
+	"github.com/Shopify/sarama"
+	"github.com/iowanobos/app/models"
+	"github.com/iowanobos/app/models/request"
+	"github.com/iowanobos/app/models/response"
+	"github.com/iowanobos/app/utils"
+
 	"context"
 	"encoding/json"
-	"github.com/Shopify/sarama"
 	"log"
 	"math/rand"
 	"time"
@@ -66,7 +67,7 @@ func NewReceiver(c *models.Config) *Receiver {
 		log.Fatal("Create consumer failed. Error: " + err.Error())
 	}
 
-	return  &Receiver{
+	return &Receiver{
 		Name:         "receiver",
 		sendTopic:    c.ResponseTopic,
 		receiveTopic: c.RequestTopic,

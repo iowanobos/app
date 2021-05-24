@@ -1,4 +1,4 @@
-module awesomeProject1/diploma
+module github.com/iowanobos/app
 
 go 1.15
 
